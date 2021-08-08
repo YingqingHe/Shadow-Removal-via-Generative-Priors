@@ -1,13 +1,7 @@
-# Unsupervised Portrait Shadow Removal via Generative Priors
+# ShadowGP
 
 
 **This repository includes official codes for "[Unsupervised Portrait Shadow Removal via Generative Priors (ACM MM 2021)](https://arxiv.org/abs/)".** 
-
-![](./figures/teaser.png)
-**Figure:** *Our results*
-
-Portrait images often suffer from undesirable shadows cast by casual objects or even the face itself. While existing methods for portrait shadow removal require training on a large-scale synthetic dataset, we propose the first unsupervised method for portrait shadow removal without any training data. Our key idea is to leverage the generative facial priors embedded in the off-the-shelf pretrained StyleGAN2. To achieve this, we formulate the shadow removal task as a layer decomposition problem: a shadowed portrait image is constructed by the blending of a shadow image and a shadow-free image. We propose an effective progressive optimization algorithm to learn the decomposition process. Our approach can also be extended to portrait tattoo removal and watermark removal. Qualitative and quantitative experiments on a real-world portrait shadow dataset demonstrate that our approach achieves comparable performance with supervised shadow removal methods. 
-
 > **Unsupervised Portrait Shadow Removal via Generative Priors** <br>
 >  Yingqing He*, Yazhou Xing*, Tianjia Zhang, Qifeng Chen (* indicates joint first authors)<br>
 >  HKUST <br>
@@ -16,11 +10,19 @@ Portrait images often suffer from undesirable shadows cast by casual objects or 
 [[Project Page](TBA)]
 [[Technical Video (Coming soon)](TBA)]
 
+
+In this repository, we propose an unsupervised method for portrait shadow removal, named as ShadowGP. ShadowGP can recover a shadow-free portrait image via single image optimization, without a large paired training dataset, which is expensive to collect and time-consuming to train. Besides, our method can also be extended to facial tattoo removal and watermark removal tasks.   
+![](./figures/teaser.png)
+<!-- **Figure:** *Our results* -->
+<!-- <br />     -->
+ShadowGP can decompose the **single input shadowed portrait image** into **3 parts: a full-shadow portrait, a shadow-free portrait and a shadow mask**. Blending the three parts together can reconstruct the input shadowed portrait. The decomposed shadow-free portrait is the target output.  
 ![](./figures/method_01.png)
-**Figure:** *Our unsupervised method takes a single shadow portrait as input and can decompose it into a shadow-free portrait image, a full-shadow portrait image, and a shadow mask*
+<!-- **Figure:** *Our unsupervised method takes a single shadow portrait as input and can decompose it into a shadow-free portrait image, a full-shadow portrait image, and a shadow mask* -->
+
+
 
 ## Code will come soon.
-
+<br />
 
 ## Citation
 
