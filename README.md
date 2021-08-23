@@ -29,7 +29,7 @@ ShadowGP can decompose the **single input shadowed portrait image** into **3 par
 ```
 @inproceedings{he21unsupervised,
   title     = {Unsupervised Portrait Shadow Removal via Generative Priors},
-  author    = {He, Yingqing and Xing, Yazhou and Zhang Tianjia and Chen, Qifeng},
+  author    = {He, Yingqing and Xing, Yazhou and Zhang, Tianjia and Chen, Qifeng},
   booktitle = {ACM International Conference on Multimedia (ACM MM)},
   year      = {2021}
 }
