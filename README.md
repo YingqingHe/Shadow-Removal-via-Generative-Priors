@@ -1,13 +1,13 @@
 # ShadowGP
 
 
-**This repository includes official codes for "[Unsupervised Portrait Shadow Removal via Generative Priors (ACM MM 2021)](https://arxiv.org/abs/)".** 
+**This repository includes official codes for "[Unsupervised Portrait Shadow Removal via Generative Priors (ACM MM 2021)](https://arxiv.org/abs/2108.03466)".** 
 > **Unsupervised Portrait Shadow Removal via Generative Priors** <br>
 >  Yingqing He*, Yazhou Xing*, Tianjia Zhang, Qifeng Chen (* indicates joint first authors)<br>
 >  HKUST <br>
 
-[[Paper](https://arxiv.org/)] 
-[[Project Page](TBA)]
+[[Paper](https://arxiv.org/abs/2108.03466)] 
+[[Project Page (Coming soon)](TBA)]
 [[Technical Video (Coming soon)](TBA)]
 
 
