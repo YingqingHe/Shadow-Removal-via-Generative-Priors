@@ -13,6 +13,8 @@ import lpips
 from model import Generator
 from utils.projection_utils import *
 
+
+
 def prepare_parser():
     parser = argparse.ArgumentParser(
         description="Arguments for StyleGAN2 projection."

@@ -16,6 +16,7 @@ from utils import preprocess
 from projector import prepare_parser
 from utils.projection_utils import *
 
+
 def fill_noise(x, noise_type):
     """Fills tensor `x` with noise of type `noise_type`."""
     if noise_type == 'u':
@@ -24,7 +25,6 @@ def fill_noise(x, noise_type):
         x.normal_()
     else:
         assert False
-
 
 def get_noise(input_depth, method, spatial_size, noise_type='u', var=1./10):
     """Returns a pytorch.Tensor of size (1 x `input_depth` x `spatial_size[0]` x `spatial_size[1]`) 
@@ -56,9 +56,7 @@ def get_noise(input_depth, method, spatial_size, noise_type='u', var=1./10):
     return net_input
 
 def add_shadow_removal_parser(parser):
-    parser.add_argument(
-        "--fm_loss", type=str, help="VGG or discriminator", choices=['disc', 'vgg']
-    )
+    parser.add_argument("--fm_loss", type=str, help="VGG or discriminator", choices=['disc', 'vgg'])
     
     parser.add_argument("--w_noise_reg", type=float, default=1e5, help="weight of the noise regularization")
     parser.add_argument("--w_mse", type=float, default=0,
