@@ -1,5 +1,3 @@
-import argparse
-import math
 import os
 from PIL import Image
 from tqdm import tqdm
@@ -102,7 +100,7 @@ def main(img_path, res_dir, device, args):
 
     # ----- load shadow images ------
     img_np = np.array(Image.open(img_path).convert('RGB'))
-    img = transform(Image.open(img_path).convert("RGB"))  # range: -1~1
+    img = transform(Image.open(img_path).convert("RGB"))
     img_name = os.path.splitext(os.path.basename(img_path))[0]
     print(f'target img path: {img_path}')
 
@@ -111,7 +109,7 @@ def main(img_path, res_dir, device, args):
     binary_mask = preprocess.evaluate(respth=res_dir, dspth=img_path, cp=face_parsing_netp, seg_type='binary')
     binary_mask = binary_mask[::2, ::2]
     utils.save_np_img(binary_mask, img_path=res_dir + '/binarymask.jpg')
-    binary_mask = torch.tensor(binary_mask).to(device).reshape(1, 1, 256, 256) / 255.  # 0-1
+    binary_mask = torch.tensor(binary_mask).to(device).reshape(1, 1, 256, 256) / 255.
 
     # parse facial details for refinement in stage 3 
     parse_map = preprocess.evaluate(respth=res_dir, dspth=img_path, cp=face_parsing_netp, seg_type='five_organs')
@@ -183,8 +181,8 @@ def main(img_path, res_dir, device, args):
     losses, latents_in = [], []
     with torch.no_grad():
         noise_sample = torch.randn(args.n_mean_latent, 512, device=device)
-        latent_out = g_ema.style(noise_sample)  # 10000, 512
-        latent_mean = latent_out.mean(0)        # 1,512
+        latent_out = g_ema.style(noise_sample)
+        latent_mean = latent_out.mean(0)
         latent_std = ((latent_out - latent_mean).pow(2).sum() /
                       args.n_mean_latent) ** 0.5
 
@@ -192,10 +190,10 @@ def main(img_path, res_dir, device, args):
         for i in range(500):
             noise_sample = torch.randn(1, 512, device=device)
             latent_in = g_ema.style(noise_sample).reshape(1, 1, 512)
-            latent_in = latent_in.repeat(1, g_ema.n_latent, 1)  # (1, 14, 512)
+            latent_in = latent_in.repeat(1, g_ema.n_latent, 1)
 
             img_gen, _ = g_ema(
-                [latent_in], input_is_latent=True, noise=noises)  # 1,3,256,256
+                [latent_in], input_is_latent=True, noise=noises)
 
             if args.save_samples:
                 os.makedirs(res_dir + '/sample-latent/', exist_ok=True)
@@ -214,10 +212,9 @@ def main(img_path, res_dir, device, args):
     latent_in = latents_in[idx]
     latent_in.requires_grad = True
 
-    # if mask has 1 variable
     mask_noise = get_noise(32, 'noise', (256, 256)).cuda()
 
-    shadow_matrix_init = torch.zeros((1, 3)).fill_(0.5).cuda()  # 32,256, 256
+    shadow_matrix_init = torch.zeros((1, 3)).fill_(0.5).cuda()
     shadow_matrix_init.requires_grad = True
 
     # --- optimizer for stage 1 ----
@@ -234,12 +231,11 @@ def main(img_path, res_dir, device, args):
     for i in pbar:
         t = i / args.step
         lr = get_lr(t, args.lr)
-        # optimizer_latent.param_groups[0]["lr"] = lr
 
         noise_strength = latent_std * args.noise * \
             max(0, 1 - t / args.noise_ramp) ** 2
         latent_n = latent_noise(latent_in, noise_strength.item())
-        img_gen, _ = g_ema([latent_n], input_is_latent=True,noise=noises)  # 1,3,256,256
+        img_gen, _ = g_ema([latent_n], input_is_latent=True,noise=noises)
 
         batch, channel, height, width = img_gen.shape
 

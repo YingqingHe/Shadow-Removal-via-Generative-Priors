@@ -15,12 +15,9 @@ from utils.projection_utils import *
 
 def prepare_parser():
     parser = argparse.ArgumentParser(
-        description="TODO"
+        description="Arguments for StyleGAN2 projection."
     )
-    parser.add_argument(
-        "--ckpt", type=str, default='checkpoint/550000.pt', help="path to the model checkpoint"
-    )
-
+    
     parser.add_argument(
         "--img_dir", type=str, default='imgs/', help="path to image dir to be projected"
     )
@@ -30,13 +27,15 @@ def prepare_parser():
     parser.add_argument(
         "--save_dir", type=str, default='results/', help="path to results to be saved"
     )
+    parser.add_argument(
+        "--ckpt", type=str, default='checkpoint/550000.pt', help="path to the model checkpoint"
+    )
 
-    # data args
+
     parser.add_argument(
         "--size", type=int, default=256, help="output image sizes of the generator"
     )
 
-    # optimization args
     parser.add_argument(
         "--w_plus",
         action="store_true",
