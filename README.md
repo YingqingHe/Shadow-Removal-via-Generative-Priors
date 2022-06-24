@@ -46,7 +46,7 @@ mv ${YOUR_PATH}/face-seg-BiSeNet-79999_iter.pth checkpoint/
 ```
 bash run.sh
 ```
-Then it will create a results folder including all the intermidiate results and a final output results folder in results/res.
+Then it will create a `results` folder including all the intermidiate results and a final output results folder in `results/res`.
 <br />
 
 ## Acknowledgement
