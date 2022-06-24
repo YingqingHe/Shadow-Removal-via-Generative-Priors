@@ -3,7 +3,7 @@
 CUDA_VISIBLE_DEVICES=0
 python remove_shadow.py \
     \
-    --save_dir results/2/ \
+    --save_dir results/ \
     --img_dir imgs/ \
     \
     --size 256 \
