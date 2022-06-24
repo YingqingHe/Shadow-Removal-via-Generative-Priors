@@ -35,13 +35,15 @@ We use the same system requirements as [StyleGAN2-PyTorch](https://github.com/ro
 <br />
 
 ## Download Checkpoints
-Download all checkpoints from [google drive](https://drive.google.com/drive/folders/1Rg5He8XIY8qP4JYPFRRGUIvfZUcqm8zt?usp=sharing), and put them in checkpoint/ folder.
+Download the pretrained StyleGAN `550000.pt` and the pretrained face segmentation model `face-seg-BiSeNet-79999_iter.pth` from [google drive](https://drive.google.com/drive/folders/1Rg5He8XIY8qP4JYPFRRGUIvfZUcqm8zt?usp=sharing), and put them in checkpoint/ folder.
 ```
 cd Shadow-Removal-via-Generative-Priors
 mkdir checkpoint
 mv ${YOUR_PATH}/550000.pt checkpoint/
 mv ${YOUR_PATH}/face-seg-BiSeNet-79999_iter.pth checkpoint/
 ```
+If the lpips checkpoint cannot be downloaded automatically, you can also manually download the `weights.tar.gz` to the project directory and run `tar -zxvf weights.tar.gz`. Then you will see the checkpoint in `lpips/weights/v0.1/vgg.pth`.
+
 ## Run
 ```
 bash run.sh
