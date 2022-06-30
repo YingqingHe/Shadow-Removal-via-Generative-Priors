@@ -30,7 +30,7 @@ conda activate shadowgp
 pip3 install torch==1.3.1+cu100 torchvision==0.4.2+cu100 -f https://download.pytorch.org/whl/torch_stable.html
 pip3 install opencv-python tqdm scikit-image==0.15 Pillow==7.1.0 Ipython ninja
 ```
-We use the same system requirements as [StyleGAN2-PyTorch](https://github.com/rosinality/stylegan2-pytorch).
+Our code has the same system requirements as [StyleGAN2-PyTorch](https://github.com/rosinality/stylegan2-pytorch).
 
 <br />
 
